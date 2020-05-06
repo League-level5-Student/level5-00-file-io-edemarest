@@ -1,6 +1,43 @@
 package _03_To_Do_List;
 
-public class ToDoList {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class ToDoList implements ActionListener {
+	ArrayList<String> list = new ArrayList<String>();
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton add = new JButton("Add Task");
+	JButton view = new JButton("View Tasks");
+	JButton remove = new JButton("Remove Task");
+	JButton save = new JButton("Save List");
+	JButton load = new JButton("Load List");
+	
+	void run() {
+		frame.add(panel);
+		panel.add(add);
+		panel.add(view);
+		panel.add(remove);
+		panel.add(save);
+		panel.add(load);
+		add.addActionListener(this);
+		view.addActionListener(this);
+		remove.addActionListener(this);
+		save.addActionListener(this);
+		load.addActionListener(this);
+		frame.setVisible(true);
+		frame.pack();
+		
+		
+	}
 	/*
 	 * Create a program with five buttons, add task, view tasks, remove task, save list, and load list. 
 	 *
@@ -21,4 +58,41 @@ public class ToDoList {
 	 * 
 	 * When the program starts, it should automatically load the last saved file into the list. 
 	 */
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource() == add) {
+			String task = JOptionPane.showInputDialog("Enter a task to add to the list: ");
+			list.add(task);
+		}
+		if(e.getSource() == view) {
+			String allTasks = "";
+			for(int i = 0; i < list.size(); i++) {
+				allTasks = allTasks + list.get(i)+"\n";
+			}
+			JOptionPane.showMessageDialog(null, "All your your tasks: \n"+allTasks);
+		}
+		if(e.getSource() == remove) {
+			String r = JOptionPane.showInputDialog("Enter a task you would like to remove from your list: ");
+			for(int i = 0; i < list.size(); i++) {
+				if(list.get(i).contains(r)) {
+					list.remove(i);
+				}
+			}
+		}
+		if(e.getSource() == save) {
+			String name = JOptionPane.showInputDialog("Enter a name for the list: ");
+			try {
+				FileWriter fw = new FileWriter("src/_03_To_Do_List/"+name+".txt");
+				for(int i = 0; i < list.size(); i++) {
+				fw.write("#"+(i+1)+"    "+list.get(i));	
+				}
+				fw.close();
+			} catch (IOException f) {
+				f.printStackTrace();
+			}
+		}
+		
+	}
 }
