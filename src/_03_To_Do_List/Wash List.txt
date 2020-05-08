@@ -1,0 +1,3 @@
+#1    Wash hands
+#2    Wash face
+#3    Brush teeth
