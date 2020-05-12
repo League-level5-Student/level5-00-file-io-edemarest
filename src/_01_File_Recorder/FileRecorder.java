@@ -31,3 +31,4 @@ public class FileRecorder {
 	// Create a program that takes a message from the user and saves it to a file.
 
 
+//Copyright © 2019 Ella Demarest

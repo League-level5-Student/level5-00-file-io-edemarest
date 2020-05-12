@@ -12,3 +12,4 @@ public class SaveData {
 		this.age = age;
 	}
 }
+//Copyright © 2019 Ella Demarest

@@ -32,3 +32,4 @@ public class FileEncryptor {
 	
 
 }
+//Copyright © 2019 Ella Demarest

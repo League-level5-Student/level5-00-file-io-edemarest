@@ -20,3 +20,4 @@ public class FileDecryptor {
 	 * the message, then display it to the user in a JOptionPane.
 	 */
 }
+//Copyright © 2019 Ella Demarest
